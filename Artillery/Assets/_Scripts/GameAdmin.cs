@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class GameAdmin : MonoBehaviour
+namespace _Scripts
 {
-    public static GameAdmin GameAdminSingleton;
-    public static int BallSpeed = 30;
-    public static int BallsPerGame = 10;
-    public static float RotationSpeed = 1;
-
-    private void Awake()
+    public class GameAdmin : MonoBehaviour
     {
-        if (GameAdminSingleton == null)
+        private static GameAdmin _gameAdminSingleton;
+        internal const int BallSpeed = 30;
+        internal const float RotationSpeed = 1;
+        internal const int BallsPerGame = 10;
+        
+        private void Awake()
         {
-            GameAdminSingleton = this;
-        }
-        else
-        {
-            Debug.LogError("Instance already created");
+            if (_gameAdminSingleton == null)
+            {
+                _gameAdminSingleton = this;
+            }
+            else
+            {
+                Debug.LogError("Instance already created");
+            }
         }
     }
 }
